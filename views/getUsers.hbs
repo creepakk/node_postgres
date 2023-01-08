@@ -1,0 +1,23 @@
+{{#if users.length}}
+<ul>
+    {{#each users}}
+    <li>{{name}} {{surname}} - id {{id}},
+        <button><a href="/api/user/{{id}}">To User</a></button>
+        ----- <button><a href="/api/post/{{id}}">Posts</a></button>
+        ----- <button><a href="/createPost/{{id}}">Create Post</a></button>
+        ----- <button><a href="/updateUser/{{id}}">Update User</a></button>
+        ----- <button onclick="deleteUser({{id}})">Delete User</button>
+    </li>
+    {{/each}}
+</ul>
+
+<script>
+    let deleteUser = (id) => {
+        fetch('/api/user/' + id, {
+            method: 'DELETE'
+        }).then(document.location.reload())
+    }
+</script>
+{{else}}
+<p>Users not found</p>
+{{/if}}

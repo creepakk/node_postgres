@@ -1,0 +1,10 @@
+{{#if posts.length}}
+<h1>Posts By UserId : {{id}}</h1>
+<ul>
+    {{#each posts}}
+    <li>PostId : {{id}}, Title : {{title}}</li>
+    {{/each}}
+</ul>
+{{else}}
+<h3>Posts not found</h3>
+{{/if}}

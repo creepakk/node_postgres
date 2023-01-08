@@ -1,0 +1,23 @@
+<h1>Update User Id : {{id}}</h1>
+
+<label for="PUT-name">Name:</label>
+<input type="text" id="PUT-name" name="name">
+<label for="PUT-surname">Surname:</label>
+<input type="text" id="PUT-surname" name="surname">
+<button onclick="updateUser({{id}})"><a href="/api/user">Update User</a></button>
+
+<script>
+    let updateUser = (id) => {
+        fetch(`/api/user/${id}`, {
+            method: 'put',
+            headers: {
+                'Content-Type': 'application/json;charset=utf-8'
+            },
+            body: JSON.stringify({
+                id: id,
+                name: document.querySelector('#PUT-name').value,
+                surname: document.querySelector('#PUT-surname').value
+            })
+        }).then(document.location.reload())
+    }
+</script>
